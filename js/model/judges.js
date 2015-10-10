@@ -1,5 +1,5 @@
 var Util = (function(){
-    _public = {};
+    var _public = {};
     _public.loadPage = function(href)
     {
         var xmlhttp = new XMLHttpRequest();
@@ -7,25 +7,22 @@ var Util = (function(){
         xmlhttp.send();
         return xmlhttp.responseText;
     }
+    return _public;
 })();
 
 var Spoj = (function(){
 
-    _private = {};
-    _private.baseUrl = "https://www.urionlinejudge.com.br/";
-    _private.judgePath = "judge/";
-    _private.profilePath = "profile/"; 
-    _private.defaultLang = 'pt';
-    _private.getUserById = function(id){
-        console.log(id);
-        console.log(_private);
+    var _private = {};
+    _private.baseUrl = "https://br.spoj.com/";
+    _private.profilePath = "users/"; 
+    _private.getUserProfile = function(user){
+        Util.loadPage(_private.baseUrl + _private.profilePath + user);
     };
 
-    _public = {};
-    _public.userId = "";
-    _public.getUser = _private.getUserById;
+    var _public = {};
+    _public.getUser = _private.getUserProfile;
     _public.get = function(){
-        _public.getUser(123);
+        _public.getUser("m1thr4nd1r");
     }
 
     return _public;
@@ -33,7 +30,7 @@ var Spoj = (function(){
 
 var URIJudge = (function(){
 
-	_private = {};
+	var _private = {};
 	_private.baseUrl = "https://www.urionlinejudge.com.br/";
 	_private.judgePath = "judge/";
 	_private.profilePath = "profile/"; 
@@ -43,7 +40,7 @@ var URIJudge = (function(){
 		console.log(_private);
 	};
 
-	_public = {};
+	var _public = {};
 	_public.userId = "";
 	_public.getUser = _private.getUserById;
 	_public.get = function(){
