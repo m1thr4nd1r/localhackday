@@ -1,4 +1,4 @@
-var URI = (function(){
+var URIJudge = (function(){
 
 	_private = {};
 	_private.baseUrl = "https://www.urionlinejudge.com.br/";
